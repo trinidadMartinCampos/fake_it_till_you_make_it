@@ -3,13 +3,13 @@
 # Created: November 6, 2023
 # Description: This script performs a simple test for python pandas
 
-def extractData(pandasObj, columnsList, diameter, condition):
+def extractData(pandas_obj, columns_list, diameter, condition):
     """Python statement to keep only specific columns.
 
     Params:
-        pandasObj: Pandas from csv file,
+        pandas_obj: Pandas from csv file,
             The input file
-        columnslist: List of columns names to filter
+        columns_list: List of columns names to filter
         diameter: float
             condition for est_diameter_min
         condition: boolean
@@ -18,10 +18,10 @@ def extractData(pandasObj, columnsList, diameter, condition):
     Returns:
         A pandas with filtered columns.
     """
-    extracted_pandas = pandasObj.loc[:, columnsList]
+    extracted_pandas = pandas_obj.loc[:, columns_list]
     # extract columns where the minimum estimated diameter is larger than 3.5 kilometers and 'hazardous' is True
     filtered_pandas = extracted_pandas.loc[
-        (extracted_pandas['est_diameter_min'] > diameter) & (extracted_pandas['hazardous'])]
+        (extracted_pandas['est_diameter_min'] > diameter) & (extracted_pandas['hazardous']==condition)]
     return filtered_pandas
 
 
@@ -97,36 +97,36 @@ if __name__ == "__main__":
     import pandas as pd
 
     # Code to be extract all rows by only specific columns
-    data = pd.read_csv(
+    data_input = pd.read_csv(
         'https://codefinity-content-media.s3.eu-west-1.amazonaws.com/4bf24830-59ba-4418-969b-aaf8117d522e/planet')
-    names = ['name', 'est_diameter_min', 'hazardous']
-    print(extractData(data, names, 3.5, True))
+    names_input = ['name', 'est_diameter_min', 'hazardous']
+    print(extractData(data_input, names_input, 3.5, True))
 
     # Pretty version
-    data = pd.read_csv(
+    data_input = pd.read_csv(
         'https://codefinity-content-media.s3.eu-west-1.amazonaws.com/4bf24830-59ba-4418-969b-aaf8117d522e/cars',
         index_col=0)
-    categories = ['Sedan', 'Jeep', 'Coupe']
-    gear_box = ['Variator', 'Automatic']
-    print(extractDataPretty(data, categories, gear_box))
+    categories_input = ['Sedan', 'Jeep', 'Coupe']
+    gear_box_input = ['Variator', 'Automatic']
+    print(extractDataPretty(data_input, categories_input, gear_box_input))
 
     # Between function
-    data = pd.read_csv(
+    data_input = pd.read_csv(
         'https://codefinity-content-media.s3.eu-west-1.amazonaws.com/4bf24830-59ba-4418-969b-aaf8117d522e/cars',
         index_col=0)
-    fuel_types = ['Plug-in Hybrid', 'Hybrid']
-    print(betweenFunction(data, fuel_types).head())
+    fuel_types_input = ['Plug-in Hybrid', 'Hybrid']
+    print(betweenFunction(data_input, fuel_types_input).head())
 
     # Groupby function
-    data = pd.read_csv(
+    data_input = pd.read_csv(
         'https://codefinity-content-media.s3.eu-west-1.amazonaws.com/4bf24830-59ba-4418-969b-aaf8117d522e/plane',
         index_col=0)
     # Output the first 10 rows of the data set
-    print(groupByFunction(data).head(10))
+    print(groupByFunction(data_input).head(10))
 
     # aggregate
-    data = pd.read_csv(
+    data_input = pd.read_csv(
         'https://codefinity-content-media.s3.eu-west-1.amazonaws.com/4bf24830-59ba-4418-969b-aaf8117d522e/plane',
         index_col=0)
-    data_flights = data.groupby(['AirportFrom', 'AirportTo']).agg({'Time': ['mean', 'max'], 'Length': 'median'})
+    data_flights = data_input.groupby(['AirportFrom', 'AirportTo']).agg({'Time': ['mean', 'max'], 'Length': 'median'})
     print(data_flights.head(10))
