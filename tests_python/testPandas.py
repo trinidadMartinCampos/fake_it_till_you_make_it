@@ -4,7 +4,7 @@
 # Description: This script performs a simple test for python pandas
 
 def extractData(pandasObj, columnsList, diameter, condition):
-    '''Python statement to keep only specific columns.
+    """Python statement to keep only specific columns.
 
     Params:
         pandasObj: Pandas from csv file,
@@ -17,7 +17,7 @@ def extractData(pandasObj, columnsList, diameter, condition):
 
     Returns:
         A pandas with filtered columns.
-    '''
+    """
     extracted_pandas = pandasObj.loc[:, columnsList]
     # extract columns where the minimum estimated diameter is larger than 3.5 kilometers and 'hazardous' is True
     filtered_pandas = extracted_pandas.loc[
@@ -26,7 +26,7 @@ def extractData(pandasObj, columnsList, diameter, condition):
 
 
 def extractDataPretty(pandasObj, categories, gear_box):
-    '''Python statement to keep only specific columns.
+    """Python statement to keep only specific columns.
 
     Params:
         pandasObj: Pandas from csv file,
@@ -38,7 +38,7 @@ def extractDataPretty(pandasObj, categories, gear_box):
 
     Returns:
         A pandas with filtered columns.
-    '''
+    """
     condition_1 = pandasObj['Category'].isin(categories)
     condition_2 = pandasObj['Leather_interior'] == 'Yes'
     condition_3 = pandasObj['Gear_box_type'].isin(gear_box)
@@ -48,7 +48,7 @@ def extractDataPretty(pandasObj, categories, gear_box):
 
 
 def betweenFunction(data, fuel_types):
-    '''Python statement to keep only specific columns.
+    """Python statement to keep only specific columns.
 
     Params:
         pandasObj: Pandas from csv file,
@@ -58,7 +58,7 @@ def betweenFunction(data, fuel_types):
 
     Returns:
         A pandas with filtered columns.
-    '''
+    """
     # Put the condition on the column 'Price'
     condition_1 = data['Price'].between(15000, 20000, inclusive='left')
     # Put the condition on the column 'Year'
@@ -72,14 +72,14 @@ def betweenFunction(data, fuel_types):
 
 
 def groupByFunction(data) -> dict:
-    '''Python statement to keep only specific columns.
+    """Python statement to keep only specific columns.
 
     Params:
         pandasObj: Pandas from csv file,
             The input file
     Returns:
         A pandas with filtered columns.
-    '''
+    """
     # Extract the columns 'AirportFrom', 'Airline', 'Time', and 'Length' from data
     # Apply the .groupby() function to the previous columns.
     # Within the .groupby() function, put the columns 'AirportFrom' and 'Airline'; the order is crucial
