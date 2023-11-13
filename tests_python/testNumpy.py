@@ -1,4 +1,4 @@
-# Project: python test 3
+# Project: python test numpy
 # Author: Trinidad Martín Campos
 # Created: November 6, 2023
 # Description: This script performs a simple test for python pandas
