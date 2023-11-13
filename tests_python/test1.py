@@ -52,28 +52,28 @@ def fizzbuzz(n):
         n: Integer,
             The number to check
 
-    Returns:
+    Returns result_out:
         "FIZZ" if number is a multiple of 3
         “BUZZ” if number is a multiple of 5
         “FIZZBUZZ” if number is a multiple of 3 AND 5
         Number as a string if else
     """
-    result = ""
-    if (n % 3 == 0):
-        if (n % 5 == 0):
-            result = "FIZZBUZZ"
+    result_out = ""
+    if n % 3 == 0:
+        if n % 5 == 0:
+            result_out = "FIZZBUZZ"
         else:
-            result = "FIZZ"
-    elif (n % 5 == 0):
-        result = "BUZZ"
+            result_out = "FIZZ"
+    elif n % 5 == 0:
+        result_out = "BUZZ"
     else:
-        result = str(n)
-    return result
+        result_out = str(n)
+    return result_out
 
 
 def convert_celsius_to_fahrenheit(deg_celsius):
     """
-    Convert degress celsius to fahrenheit
+    Convert degrees celsius to fahrenheit
     Returns float value - temp in fahrenheit
     
     Parameters:
@@ -99,13 +99,13 @@ def maximum(number_list):
         
     Returns:
     -------
-    integer: max integer
+    result_out: max integer
     """
-    result: int = 0
+    result_out: int = 0
     for num in number_list:
-        if num > result:
-            result = num
-    return result
+        if num > result_out:
+            result_out = num
+    return result_out
 
 
 def flatten_lists(list_of_lists):
@@ -134,22 +134,22 @@ if __name__ == "__main__":
 
     # PV function
     # Test case 1
-    future_value = 2000
-    rate = 0.035
-    n = 5
-    result = pv(future_value, rate, n)
+    future_value_input = 2000
+    rate_input = 0.035
+    n_input = 5
+    result = pv(future_value_input, rate_input, n_input)
     print(f'{result:.2f}')
     # Test case 2
-    future_value = 350
-    rate = 0.01
-    n = 10
-    result = pv(future_value, rate, n)
+    future_value_input = 350
+    rate_input = 0.01
+    n_input = 10
+    result = pv(future_value_input, rate_input, n_input)
     print(f'{result:.2f}')
 
     # Fizzbuzz function
     list_numbers = [1, 3, 5, 15, 23]
-    for n in list_numbers:
-        result = fizzbuzz(n)
+    for number in list_numbers:
+        result = fizzbuzz(number)
         print(result)
 
     # Celsius function
@@ -165,8 +165,8 @@ if __name__ == "__main__":
     print(max_number)
 
     # Flatten function
-    list_of_lists = [[8, 2, 1], [9, 1, 2], [4, 5, 100]]
-    final_list = flatten_lists(list_of_lists)
+    list_of_lists_input = [[8, 2, 1], [9, 1, 2], [4, 5, 100]]
+    final_list = flatten_lists(list_of_lists_input)
     print(final_list)
 
     # Comics function
