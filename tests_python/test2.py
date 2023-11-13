@@ -51,17 +51,17 @@ def formatting_withOrder(day, country, month):
     print(pattern.format(day, month, country))
 
 
-def formatting_withDict(dict):
+def formatting_withDict(input_dict):
     """Python statement to format a string with a given dictionary to use within the pattern
     Params:
-        dict: dictionary {country, capital}
+        input_dict: dictionary {country, capital}
 
     Returns:
         No returns. Print the formatted pattern with the variables
     """
     # create pattern
     geo_str = "The capital of {d[country]} is {d[capital]}"
-    print(geo_str.format(d=dict))
+    print(geo_str.format(d=input_dict))
 
 
 def challenge(dict_person):
@@ -105,7 +105,8 @@ def formatting_extras(population, area):
     Returns:
         No returns. Print the formatted pattern with the variables
     """
-    # Format the first string so the population and area will be printed in format: 9,147,420, and insert variables in the correct order.
+    # Format the first string so the population and area will be printed in format: 9,147,420, and insert variables
+    # in the correct order.
     print("Area of USA: {0:,} sq.km. Population: {1:,}".format(area, population))
     # Within the second .format function calculate the population density and format the number in format 28.45.
     print("Population density: {0:.2f} people/sq.km".format(population / area))
@@ -147,16 +148,16 @@ def unpacking(*args, **kwargs):
 if __name__ == "__main__":
     # Code to be executed when the script is run directly
     # trim function
-    ages = ['43 y/o', '24 y/o', '34 y/o', '23 y/o']
-    print(trimming(ages))
+    ages_list = ['43 y/o', '24 y/o', '34 y/o', '23 y/o']
+    print(trimming(ages_list))
 
     # formatting
     formatting('Trini', 'Thursday')
     formatting_withOrder('4th', 'USA', 'July')
     dict_example = {'country': 'the United States', 'capital': 'Washington D.C.'}
     formatting_withDict(dict_example)
-    dict_person = {'name': 'John', 'weight': 76, 'height': 1.79}
-    challenge(dict_person)
+    dict_people = {'name': 'John', 'weight': 76, 'height': 1.79}
+    challenge(dict_people)
 
     # print symbols
     min_temp = -40
@@ -164,14 +165,14 @@ if __name__ == "__main__":
     print_symbols(min_temp, max_temp)
 
     # formatting decimals
-    population = 331002651
-    area = 9147420
-    formatting_extras(population, area)
+    population_param = 331002651
+    area_param = 9147420
+    formatting_extras(population_param, area_param)
 
     # formatting %
-    population = 331002651
-    urban_pop = 273975139
-    formatting_extras2(population, urban_pop)
+    population_param_2 = 331002651
+    urban_pop_param = 273975139
+    formatting_extras2(population_param_2, urban_pop_param)
 
     # unpacking
     string, result = unpacking(123, 12, "sss", bold=1231, first="sad", snake="sum")
