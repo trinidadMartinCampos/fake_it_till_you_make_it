@@ -1,33 +1,35 @@
 # Project: python test 3
 # Author: Trinidad Martín Campos
 # Created: November 6, 2023
-# Description: This script performs a simple test for python data tyoes
+# Description: This script performs a simple test for python data types
 
-def comprehension(list1, filter):
+def comprehension(list1, given_filter):
     """Python statement to keep only even number of the list
 
     Params:
-        ages: List of int,
+        list1: List of int,
             The input list
+        given_filter: int
 
     Returns:
         A list with even numbers.
     """
-    filtered_numbers = [num for num in list1 if num % 2 == 0 and num > filter]
+    filtered_numbers = [num for num in list1 if num % 2 == 0 and num > given_filter]
     return filtered_numbers
 
 
-def comprehensionDict(dict1, filter):
+def comprehensionDict(dict1, given_filter):
     """Python statement to keep only cities with populations greater than a specified number.
 
     Params:
         dict1: Dict of str:int,
             The input dict
+        given_filter: int
 
     Returns:
         A dict with filtered cities.
     """
-    filtered_cities = {city: population for city, population in cities_population.items() if population > filter}
+    filtered_cities = {city: population for city, population in cities_population.items() if population > given_filter}
     return filtered_cities
 
 
