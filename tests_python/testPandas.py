@@ -1,4 +1,4 @@
-# Project: python test 3
+# Project: python test pandas
 # Author: Trinidad Martín Campos
 # Created: November 6, 2023
 # Description: This script performs a simple test for python pandas
@@ -21,7 +21,7 @@ def extractData(pandas_obj, columns_list, diameter, condition):
     extracted_pandas = pandas_obj.loc[:, columns_list]
     # extract columns where the minimum estimated diameter is larger than 3.5 kilometers and 'hazardous' is True
     filtered_pandas = extracted_pandas.loc[
-        (extracted_pandas['est_diameter_min'] > diameter) & (extracted_pandas['hazardous']==condition)]
+        (extracted_pandas['est_diameter_min'] > diameter) & (extracted_pandas['hazardous'] == condition)]
     return filtered_pandas
 
 
@@ -128,5 +128,16 @@ if __name__ == "__main__":
     data_input = pd.read_csv(
         'https://codefinity-content-media.s3.eu-west-1.amazonaws.com/4bf24830-59ba-4418-969b-aaf8117d522e/plane',
         index_col=0)
-    data_flights_input = data_input.groupby(['AirportFrom', 'AirportTo']).agg({'Time': ['mean', 'max'], 'Length': 'median'})
+    data_flights_input = data_input.groupby(['AirportFrom', 'AirportTo']).agg(
+        {'Time': ['mean', 'max'], 'Length': 'median'})
+    print(data_flights_input.head(10))
+
+    # pivot table approach
+    data_input = pd.read_csv(
+        'https://codefinity-content-media.s3.eu-west-1.amazonaws.com/4bf24830-59ba-4418-969b-aaf8117d522e/plane',
+        index_col=0)
+    data_flights_input = pd.pivot_table(data_input, index=['Airline', 'AirportFrom'],
+                                        values=['Delay', 'Length'],
+                                        aggfunc={'Length': ['min', 'max'], 'Delay': 'count'})
+
     print(data_flights_input.head(10))
