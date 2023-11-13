@@ -25,11 +25,11 @@ def extractData(pandas_obj, columns_list, diameter, condition):
     return filtered_pandas
 
 
-def extractDataPretty(pandasObj, categories, gear_box):
+def extractDataPretty(pandas_obj, categories, gear_box):
     """Python statement to keep only specific columns.
 
     Params:
-        pandasObj: Pandas from csv file,
+        pandas_obj: Pandas from csv file,
             The input file
         categories: List of str
             'Sedan', 'Jeep', 'Coupe'
@@ -39,11 +39,11 @@ def extractDataPretty(pandasObj, categories, gear_box):
     Returns:
         A pandas with filtered columns.
     """
-    condition_1 = pandasObj['Category'].isin(categories)
-    condition_2 = pandasObj['Leather_interior'] == 'Yes'
-    condition_3 = pandasObj['Gear_box_type'].isin(gear_box)
+    condition_1 = pandas_obj['Category'].isin(categories)
+    condition_2 = pandas_obj['Leather_interior'] == 'Yes'
+    condition_3 = pandas_obj['Gear_box_type'].isin(gear_box)
 
-    data_extracted = pandasObj.loc[condition_1 & condition_2 & condition_3]
+    data_extracted = pandas_obj.loc[condition_1 & condition_2 & condition_3]
     return data_extracted
 
 
@@ -128,5 +128,5 @@ if __name__ == "__main__":
     data_input = pd.read_csv(
         'https://codefinity-content-media.s3.eu-west-1.amazonaws.com/4bf24830-59ba-4418-969b-aaf8117d522e/plane',
         index_col=0)
-    data_flights = data_input.groupby(['AirportFrom', 'AirportTo']).agg({'Time': ['mean', 'max'], 'Length': 'median'})
-    print(data_flights.head(10))
+    data_flights_input = data_input.groupby(['AirportFrom', 'AirportTo']).agg({'Time': ['mean', 'max'], 'Length': 'median'})
+    print(data_flights_input.head(10))
