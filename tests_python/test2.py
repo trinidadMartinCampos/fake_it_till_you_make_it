@@ -117,7 +117,23 @@ def formatting_extras2(population,urban_pop):
     # Calculate urban population (%), and print the result in the following format: 45.653%.
     print("Urban population: {0:.3%}".format(urban_pop/population))
 
-
+def unpacking(*args, **kwargs):
+    snake = []
+    summary = 0
+    
+    for arg in args:
+        if isinstance(arg, str):
+            snake.append(arg)
+        elif isinstance(arg, int):
+            summary += arg
+            
+    for key, value in kwargs.items():
+        snake.append(key)
+        
+        if isinstance(value, int):
+            summary += value
+            
+    return "-".join(snake), summary  # packs into tuple (string, int)
 
 if __name__ == "__main__":
     # Code to be executed when the script is run directly
@@ -147,5 +163,10 @@ if __name__ == "__main__":
     population = 331002651
     urban_pop = 273975139
     formatting_extras2(population,urban_pop)
+
+    #unpacking
+    string, result = unpacking(123, 12, "sss", bold=1231, first="sad", snake="sum")
+    print("Snake:", string)
+    print("Summary:", result)
 
     
